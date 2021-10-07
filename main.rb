@@ -23,7 +23,7 @@ class LinkedList
 
   # adds a new node containing value to the start of the list
   def prepend(value)
-    @head = Node.new(value, @next_node) if @size == 0
+    @head = Node.new(value, @head)
     @size += 1
   end
 
@@ -36,6 +36,15 @@ class LinkedList
   def head
     @head
   end
+
+  # returns the last node in the list
+  def tail
+    node = @head
+      until node.next_node == nil
+        node = node.next_node
+      end
+    @tail = node
+  end
 end
 
 class Node
@@ -47,26 +56,17 @@ class Node
   end
 end
 
-binding.pry
+# binding.pry
 
 list = LinkedList.new
-p list.append(5)
-# list.prepend(10)
-# list.prepend(15)
-p list
-
-p list.append(20)
-p list.append(30)
-
+list.append(5)
+list.prepend(10)
+list.prepend(15)
+list.append(20)
+list.append(30)
 
 p list
 
-# # puts list.size
-# puts list.head
-
-# first_node = Node.new(1)
-# second_node = Node.new(2)
-# p first_node
-# p second_node
-# first_node.next_node = second_node
-# p first_node
+puts list.size
+puts list.head
+puts list.tail
