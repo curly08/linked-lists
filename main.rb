@@ -1,20 +1,28 @@
 class LinkedList
-  attr_reader :head, :tail, :next_node
+  attr_accessor :head, :tail, :next_node, :size
   def initialize
     @head = @next_node
     @tail = nil
     @next_node = @tail
+    @size = 0
   end
 
   # adds a new node containing value to the end of the list
   def append(value)
     @next_node = Node.new(value, @tail)
     @head = @next_node
+    @size += 1
   end
 
   # adds a new node containing value to the start of the list
   def prepend(value)
     @next_node = Node.new(value, @next_node)
+    @head = @next_node
+    @size += 1
+  end
+
+  def size
+    p @size
   end
 end
 
@@ -27,7 +35,9 @@ end
 
 list = LinkedList.new
 p list
-p list.append(5)
+list.append(5)
 p list
-p list.prepend(10)
+list.prepend(10)
 p list
+
+list.size
