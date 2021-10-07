@@ -1,4 +1,6 @@
 require 'pry-byebug'
+
+# LinkedList class
 class LinkedList
   attr_accessor :head, :tail, :next_node, :size
   def initialize(head = nil, tail = nil)
@@ -45,8 +47,20 @@ class LinkedList
       end
     @tail = node
   end
+
+  # returns the node at the given index
+  def at(index)
+    node = @head
+    index.times do
+      node = node.next_node
+    end
+    node unless node == nil
+
+    'no node exists at this index'
+  end
 end
 
+# Node class
 class Node
   attr_reader :data
   attr_accessor :next_node
@@ -70,3 +84,4 @@ p list
 puts list.size
 puts list.head
 puts list.tail
+puts list.at(5)
