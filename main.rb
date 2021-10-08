@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 # LinkedList class
 class LinkedList
   attr_accessor :head, :tail, :next_node, :size
@@ -113,6 +111,19 @@ class LinkedList
       @tail = self.tail  
     end
   end
+
+  # removes the node at the given index
+  def remove_at(index)
+    if index >= self.size
+      self.pop
+    elsif index == 0
+      @head = self.at(index + 1)
+      @size -= 1
+    else
+      self.at(index - 1).next_node = self.at(index + 1)
+      @size -= 1
+    end
+  end
 end
 
 # Node class
@@ -125,8 +136,6 @@ class Node
   end
 end
 
-# binding.pry
-
 list = LinkedList.new
 list.append(5)
 list.prepend(10)
@@ -134,8 +143,8 @@ list.prepend(15)
 list.append(20)
 list.append(30)
 list.append('dog')
-
-p list
+list.insert_at('cat', 6)
+list.insert_at('bat', 3)
 
 # puts list.size
 # puts list.head
@@ -147,9 +156,5 @@ p list
 # p list.contains?('dog')
 # p list.find(21)
 list.to_s
-list.insert_at('cat', 6)
-list.to_s
-list.insert_at('pup', 1)
-list.to_s
-list.insert_at('bat', 3)
+list.remove_at(3)
 list.to_s
