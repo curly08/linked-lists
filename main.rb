@@ -56,7 +56,7 @@ class LinkedList
     index.times do
       node = node.next_node
     end
-    node unless node == nil
+    return node unless node == nil
 
     'no node exists at this index'
   end
@@ -100,6 +100,19 @@ class LinkedList
     end
     print "nil\n"
   end
+
+  # inserts a new node with the provided value at the given index
+  def insert_at(value, index)
+    if index == 0
+      self.prepend(value) 
+    elsif index >= self.size
+      self.append(value)
+    else
+      self.at(index - 1).next_node = Node.new(value, self.at(index))
+      @size += 1
+      @tail = self.tail  
+    end
+  end
 end
 
 # Node class
@@ -127,10 +140,16 @@ p list
 # puts list.size
 # puts list.head
 # puts list.tail
-# puts list.at(5)
+# puts list.at(2)
 # list.pop
 # puts list.tail
 # p list
 # p list.contains?('dog')
 # p list.find(21)
+list.to_s
+list.insert_at('cat', 6)
+list.to_s
+list.insert_at('pup', 1)
+list.to_s
+list.insert_at('bat', 3)
 list.to_s
