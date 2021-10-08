@@ -90,6 +90,16 @@ class LinkedList
     end
     nil
   end
+
+  # represents my LinkedList objects as strings
+  def to_s
+    node = @head
+    self.size.times do
+      print "( #{node.data} ) -> "
+      node = node.next_node
+    end
+    print "nil\n"
+  end
 end
 
 # Node class
@@ -122,4 +132,5 @@ p list
 # puts list.tail
 # p list
 # p list.contains?('dog')
-p list.find(21)
+# p list.find(21)
+list.to_s
