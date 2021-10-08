@@ -80,6 +80,16 @@ class LinkedList
     end
     false
   end
+
+  # returns the index of the node containing value, or nil if not found
+  def find(value)
+    node = @head
+    for i in 0..self.size - 1 do
+      return i if node.data == value
+      node = node.next_node
+    end
+    nil
+  end
 end
 
 # Node class
@@ -111,4 +121,5 @@ p list
 # list.pop
 # puts list.tail
 # p list
-p list.contains?('dog')
+# p list.contains?('dog')
+p list.find(21)
