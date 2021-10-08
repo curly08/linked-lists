@@ -64,11 +64,21 @@ class LinkedList
   # removes the last element from the list
   def pop
     node = @head
-      until node.next_node == self.tail
-        node = node.next_node
-      end
+    until node.next_node == self.tail
+      node = node.next_node
+    end
     node.next_node = nil
     @size -= 1
+  end
+
+  # returns true if the passed in value is in the list and otherwise returns false
+  def contains?(value)
+    node = @head
+    self.size.times do
+      return true if node.data == value
+      node = node.next_node
+    end
+    false
   end
 end
 
@@ -90,13 +100,15 @@ list.prepend(10)
 list.prepend(15)
 list.append(20)
 list.append(30)
+list.append('dog')
 
 p list
 
 # puts list.size
 # puts list.head
-puts list.tail
+# puts list.tail
 # puts list.at(5)
 # list.pop
 # puts list.tail
-p list
+# p list
+p list.contains?('dog')
