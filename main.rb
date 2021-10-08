@@ -136,15 +136,15 @@ class Node
   end
 end
 
-list = LinkedList.new
-list.append(5)
-list.prepend(10)
-list.prepend(15)
-list.append(20)
-list.append(30)
-list.append('dog')
-list.insert_at('cat', 6)
-list.insert_at('bat', 3)
+# list = LinkedList.new
+# list.append(5)
+# list.prepend(10)
+# list.prepend(15)
+# list.append(20)
+# list.append(30)
+# list.append('dog')
+# list.insert_at('cat', 6)
+# list.insert_at('bat', 3)
 
 # puts list.size
 # puts list.head
@@ -155,6 +155,6 @@ list.insert_at('bat', 3)
 # p list
 # p list.contains?('dog')
 # p list.find(21)
-list.to_s
-list.remove_at(3)
-list.to_s
+# list.to_s
+# list.remove_at(3)
+# list.to_s
